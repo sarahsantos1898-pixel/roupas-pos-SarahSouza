@@ -2,7 +2,7 @@ import { DataTypes } from "@sequelize/core";
 import sequelize from "../../config/database.js";       
 import funcionariosController from "../../controllers/funcionarios/funcionariosController.js";
 
-const Actor = sequelize.define('funcionarios', {
+const funcionario = sequelize.define('funcionarios', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -16,5 +16,10 @@ const Actor = sequelize.define('funcionarios', {
         allowNull: false
     }
 })
+
+Funcionario.hasMany(models.Produto, {
+  foreignKey: 'funcionarioId',
+  as: 'produtos'
+});
 
 export default funcionarios
